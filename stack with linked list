@@ -1,0 +1,87 @@
+#include <iostream>
+using namespace std;
+
+struct node * head = NULL;
+struct node
+{
+    int data;
+    struct node * next;
+};
+
+void displayStack()
+{
+    if(head == NULL)
+    {
+        cout << "The stack is empty\n";
+    }
+    else
+    {
+        struct node * ptr = head;
+        while(ptr!=NULL)
+        {
+            cout << "|" << ptr->data << "|" << endl;
+            ptr = ptr->next;
+        }
+    }
+    
+    cout << endl;
+}
+
+bool isEmpty()
+{
+    if(head == NULL)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+void push(int data)
+{
+    struct node * ptr = new node;
+    ptr->data = data;
+    ptr->next = head;
+    head = ptr;
+}
+
+void pop()
+{
+   if(isEmpty())
+   {
+       cout << "Stack underflow...\n";
+   }
+    else
+    {
+        struct node * ptr = head;
+        head = head -> next;
+        cout << "The Element removed is: " << ptr->data << endl << endl;
+        ptr = NULL;
+        free(ptr);
+    }
+}
+
+int main()
+{
+  
+    push(12);
+    push(17);
+    push(11);
+    push(23);
+    push(43);
+    push(79);
+    displayStack();
+    pop();
+    pop();
+    displayStack();
+    pop();
+    pop();
+    pop();
+    pop();
+    
+    
+    cout <<  endl;
+    return 0;
+}
+    
